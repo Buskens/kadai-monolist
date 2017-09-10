@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
       })
       
       results.each do |result|
-        # 扱い易いようにItemとしてインスタンスを作成する（保存はしない）        
         item = Item.find_or_initialize_by(read(result))
         @items << item
       end
@@ -23,6 +22,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @want_users = @item.want_users
+    @have_users = @item.have_users
   end
   
 end
